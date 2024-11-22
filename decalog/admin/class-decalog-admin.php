@@ -196,7 +196,7 @@ class Decalog_Admin {
 				'icon_callback' => [ \Decalog\Plugin\Core::class, 'get_base64_logo' ],
 				'slug'          => 'decalog-settings',
 				/* translators: as in the sentence "DecaLog Settings" or "WordPress Settings" */
-				'page_title'    => sprintf( esc_html__( '%s Settings', 'decalog' ), DECALOG_PRODUCT_NAME ),
+				'page_title'    => sprintf( decalog_esc_html__( '%s Settings', 'decalog' ), DECALOG_PRODUCT_NAME ),
 				'menu_title'    => DECALOG_PRODUCT_NAME,
 				'capability'    => 'manage_options',
 				'callback'      => [ $this, 'get_settings_page' ],
@@ -211,14 +211,14 @@ class Decalog_Admin {
 		if ( Role::SUPER_ADMIN === Role::admin_type() || Role::SINGLE_ADMIN === Role::admin_type() || Role::LOCAL_ADMIN === Role::admin_type() || Role::override_privileges() ) {
 			if ( Events::loggers_count() > 0 ) {
 				$perfops['records'][] = [
-					'name'          => esc_html__( 'Events Log', 'decalog' ),
+					'name'          => decalog_esc_html__( 'Events Log', 'decalog' ),
 					/* translators: as in the sentence "Check the events that occurred on your network." or "Check the events that occurred on your website." */
-					'description'   => sprintf( esc_html__( 'Check the events that occurred on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? esc_html__( 'network', 'decalog' ) : esc_html__( 'website', 'decalog' ) ),
+					'description'   => sprintf( decalog_esc_html__( 'Check the events that occurred on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? decalog_esc_html__( 'network', 'decalog' ) : decalog_esc_html__( 'website', 'decalog' ) ),
 					'icon_callback' => [ \Decalog\Plugin\Core::class, 'get_base64_logo' ],
 					'slug'          => 'decalog-viewer',
 					/* translators: as in the sentence "DecaLog Events Viewer" */
-					'page_title'    => sprintf( esc_html__( '%s Events Viewer', 'decalog' ), DECALOG_PRODUCT_NAME ),
-					'menu_title'    => esc_html__( 'Events Log', 'decalog' ),
+					'page_title'    => sprintf( decalog_esc_html__( '%s Events Viewer', 'decalog' ), DECALOG_PRODUCT_NAME ),
+					'menu_title'    => decalog_esc_html__( 'Events Log', 'decalog' ),
 					'capability'    => 'read_private_pages',
 					'callback'      => [ $this, 'get_events_page' ],
 					'plugin'        => DECALOG_SLUG,
@@ -229,14 +229,14 @@ class Decalog_Admin {
 			}
 			if ( Traces::loggers_count() > 0 ) {
 				$perfops['records'][] = [
-					'name'          => esc_html__( 'Traces', 'decalog' ),
+					'name'          => decalog_esc_html__( 'Traces', 'decalog' ),
 					/* translators: as in the sentence "Check the traces that are recorded on your network." or "Check the traces that are recorded on your website." */
-					'description'   => sprintf( esc_html__( 'Check the traces that are recorded on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? esc_html__( 'network', 'decalog' ) : esc_html__( 'website', 'decalog' ) ),
+					'description'   => sprintf( decalog_esc_html__( 'Check the traces that are recorded on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? decalog_esc_html__( 'network', 'decalog' ) : decalog_esc_html__( 'website', 'decalog' ) ),
 					'icon_callback' => [ \Decalog\Plugin\Core::class, 'get_base64_logo' ],
 					'slug'          => 'decalog-tviewer',
 					/* translators: as in the sentence "DecaLog Traces Viewer" */
-					'page_title'    => sprintf( esc_html__( '%s Traces Viewer', 'decalog' ), DECALOG_PRODUCT_NAME ),
-					'menu_title'    => esc_html__( 'Traces', 'decalog' ),
+					'page_title'    => sprintf( decalog_esc_html__( '%s Traces Viewer', 'decalog' ), DECALOG_PRODUCT_NAME ),
+					'menu_title'    => decalog_esc_html__( 'Traces', 'decalog' ),
 					'capability'    => 'read_private_pages',
 					'callback'      => [ $this, 'get_traces_page' ],
 					'plugin'        => DECALOG_SLUG,
@@ -248,14 +248,14 @@ class Decalog_Admin {
 		}
 		if ( Role::SUPER_ADMIN === Role::admin_type() || Role::SINGLE_ADMIN === Role::admin_type() || Role::override_privileges() ) {
 			$perfops['consoles'][] = [
-				'name'          => esc_html__( 'Live Events', 'decalog' ),
+				'name'          => decalog_esc_html__( 'Live Events', 'decalog' ),
 				/* translators: as in the sentence "Check the events that occurred on your network." or "Check the events that occurred on your website." */
-				'description'   => sprintf( esc_html__( 'Displays events as soon as they occur on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? esc_html__( 'network', 'decalog' ) : esc_html__( 'website', 'decalog' ) ),
+				'description'   => sprintf( decalog_esc_html__( 'Displays events as soon as they occur on your %s.', 'decalog' ), Environment::is_wordpress_multisite() ? decalog_esc_html__( 'network', 'decalog' ) : decalog_esc_html__( 'website', 'decalog' ) ),
 				'icon_callback' => [ \Decalog\Plugin\Core::class, 'get_base64_logo' ],
 				'slug'          => 'decalog-console',
 				/* translators: as in the sentence "DecaLog Viewer" */
-				'page_title'    => sprintf( esc_html__( '%s Live Events', 'decalog' ), DECALOG_PRODUCT_NAME ),
-				'menu_title'    => esc_html__( 'Live Events', 'decalog' ),
+				'page_title'    => sprintf( decalog_esc_html__( '%s Live Events', 'decalog' ), DECALOG_PRODUCT_NAME ),
+				'menu_title'    => decalog_esc_html__( 'Live Events', 'decalog' ),
 				'capability'    => 'read_private_pages',
 				'callback'      => [ $this, 'get_console_page' ],
 				'plugin'        => DECALOG_SLUG,
@@ -290,7 +290,7 @@ class Decalog_Admin {
 			if ( Events::loggers_count() > 0 ) {
 				$perfops[] = [
 					'id'    => 'decalog-events-viewer',
-					'title' => '<strong>' . __( 'Logs', 'decalog' ) . '</strong>&nbsp;&nbsp;➜&nbsp;&nbsp;' . __( 'View Events', 'decalog' ),
+					'title' => '<strong>' .decalog__( 'Logs', 'decalog' ) . '</strong>&nbsp;&nbsp;➜&nbsp;&nbsp;' .decalog__( 'View Events', 'decalog' ),
 					'href'  => esc_url( admin_url( 'admin.php?page=decalog-viewer' . ( Environment::is_wordpress_multisite() ? '&site_id=' . Blog::get_current_blog_id() : '' ) ) ),
 					'meta'  => false,
 				];
@@ -298,7 +298,7 @@ class Decalog_Admin {
 			if ( Traces::loggers_count() > 0 ) {
 				$perfops[] = [
 					'id'    => 'decalog-traces-viewer',
-					'title' => '<strong>' . __( 'Logs', 'decalog' ) . '</strong>&nbsp;&nbsp;➜&nbsp;&nbsp;' . __( 'View Traces', 'decalog' ),
+					'title' => '<strong>' .decalog__( 'Logs', 'decalog' ) . '</strong>&nbsp;&nbsp;➜&nbsp;&nbsp;' .decalog__( 'View Traces', 'decalog' ),
 					'href'  => esc_url( admin_url( 'admin.php?page=decalog-tviewer' . ( Environment::is_wordpress_multisite() ? '&site_id=' . Blog::get_current_blog_id() : '' ) ) ),
 					'meta'  => false,
 				];
@@ -352,10 +352,10 @@ class Decalog_Admin {
 	public function blog_action( $actions, $user_blog ) {
 		if ( Role::override_privileges() || Role::SUPER_ADMIN === Role::admin_type() || Role::LOCAL_ADMIN === Role::admin_type() ) {
 			if ( Events::loggers_count() > 0 ) {
-				$actions .= " | <a href='" . esc_url( admin_url( 'admin.php?page=decalog-viewer&site_id=' . $user_blog->userblog_id ) ) . "'>" . __( 'Events', 'decalog' ) . '</a>';
+				$actions .= " | <a href='" . esc_url( admin_url( 'admin.php?page=decalog-viewer&site_id=' . $user_blog->userblog_id ) ) . "'>" .decalog__( 'Events', 'decalog' ) . '</a>';
 			}
 			if ( Traces::loggers_count() > 0 ) {
-				$actions .= " | <a href='" . esc_url( admin_url( 'admin.php?page=decalog-tviewer&site_id=' . $user_blog->userblog_id ) ) . "'>" . __( 'Traces', 'decalog' ) . '</a>';
+				$actions .= " | <a href='" . esc_url( admin_url( 'admin.php?page=decalog-tviewer&site_id=' . $user_blog->userblog_id ) ) . "'>" .decalog__( 'Traces', 'decalog' ) . '</a>';
 			}
 		}
 		return $actions;
@@ -374,10 +374,10 @@ class Decalog_Admin {
 	public function site_action( $actions, $blog_id, $blogname ) {
 		if ( Role::override_privileges() || Role::SUPER_ADMIN === Role::admin_type() || Role::LOCAL_ADMIN === Role::admin_type() ) {
 			if ( Events::loggers_count() > 0 ) {
-				$actions['events_log'] = "<a href='" . esc_url( admin_url( 'admin.php?page=decalog-viewer&site_id=' . $blog_id ) ) . "' rel='bookmark'>" . __( 'Events', 'decalog' ) . '</a>';
+				$actions['events_log'] = "<a href='" . esc_url( admin_url( 'admin.php?page=decalog-viewer&site_id=' . $blog_id ) ) . "' rel='bookmark'>" .decalog__( 'Events', 'decalog' ) . '</a>';
 			}
 			if ( Traces::loggers_count() > 0 ) {
-				$actions['traces_log'] = "<a href='" . esc_url( admin_url( 'admin.php?page=decalog-tviewer&site_id=' . $blog_id ) ) . "' rel='bookmark'>" . __( 'traces', 'decalog' ) . '</a>';
+				$actions['traces_log'] = "<a href='" . esc_url( admin_url( 'admin.php?page=decalog-tviewer&site_id=' . $blog_id ) ) . "' rel='bookmark'>" .decalog__( 'traces', 'decalog' ) . '</a>';
 			}
 		}
 		return $actions;
@@ -389,16 +389,19 @@ class Decalog_Admin {
 	 * @since 1.0.0
 	 */
 	public function init_settings_sections() {
-		add_settings_section( 'decalog_loggers_options_section', esc_html__( 'Loggers options', 'decalog' ), [ $this, 'loggers_options_section_callback' ], 'decalog_loggers_options_section' );
-		add_settings_section( 'decalog_plugin_features_section', esc_html__( 'Plugin features', 'decalog' ), [ $this, 'plugin_features_section_callback' ], 'decalog_plugin_features_section' );
-		add_settings_section( 'decalog_plugin_options_section', esc_html__( 'Plugin options', 'decalog' ), [ $this, 'plugin_options_section_callback' ], 'decalog_plugin_options_section' );
+		add_settings_section( 'decalog_loggers_options_section', decalog_esc_html__( 'Loggers options', 'decalog' ), [ $this, 'loggers_options_section_callback' ], 'decalog_loggers_options_section' );
+		add_settings_section( 'decalog_plugin_features_section', decalog_esc_html__( 'Plugin features', 'decalog' ), [ $this, 'plugin_features_section_callback' ], 'decalog_plugin_features_section' );
+		add_settings_section( 'decalog_plugin_options_section', decalog_esc_html__( 'Plugin options', 'decalog' ), [ $this, 'plugin_options_section_callback' ], 'decalog_plugin_options_section' );
 		add_settings_section( 'decalog_listeners_options_section', null, [ $this, 'listeners_options_section_callback' ], 'decalog_listeners_options_section' );
 		add_settings_section( 'decalog_listeners_settings_section', null, [ $this, 'listeners_settings_section_callback' ], 'decalog_listeners_settings_section' );
 		add_settings_section( 'decalog_logger_misc_section', null, [ $this, 'logger_misc_section_callback' ], 'decalog_logger_misc_section' );
 		add_settings_section( 'decalog_logger_delete_section', null, [ $this, 'logger_delete_section_callback' ], 'decalog_logger_delete_section' );
 		add_settings_section( 'decalog_logger_specific_section', null, [ $this, 'logger_specific_section_callback' ], 'decalog_logger_specific_section' );
-		add_settings_section( 'decalog_logger_privacy_section', esc_html__( 'Privacy options', 'decalog' ), [ $this, 'logger_privacy_section_callback' ], 'decalog_logger_privacy_section' );
-		add_settings_section( 'decalog_logger_details_section', esc_html__( 'Reported details', 'decalog' ), [ $this, 'logger_details_section_callback' ], 'decalog_logger_details_section' );
+		add_settings_section( 'decalog_logger_privacy_section', decalog_esc_html__( 'Privacy options', 'decalog' ), [ $this, 'logger_privacy_section_callback' ], 'decalog_logger_privacy_section' );
+		add_settings_section( 'decalog_logger_details_section', decalog_esc_html__( 'Reported details', 'decalog' ), [ $this, 'logger_details_section_callback' ], 'decalog_logger_details_section' );
+		if ( apply_filters( 'perfopsone_show_advanced', false ) ) {
+			add_settings_section( 'decalog_plugin_advanced_section', decalog_esc_html__( 'Plugin advanced options', 'decalog' ), [ $this, 'plugin_advanced_section_callback' ], 'decalog_plugin_advanced_section' );
+		}
 	}
 
 	/**
@@ -414,12 +417,12 @@ class Decalog_Admin {
 	 * @since 1.0.0
 	 */
 	public function add_actions_links( $actions, $plugin_file, $plugin_data, $context ) {
-		$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-settings' ), esc_html__( 'Settings', 'decalog' ) );
+		$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-settings' ), decalog_esc_html__( 'Settings', 'decalog' ) );
 		if ( Events::loggers_count() > 0 ) {
-			$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-viewer' ), esc_html__( 'Events', 'decalog' ) );
+			$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-viewer' ), decalog_esc_html__( 'Events', 'decalog' ) );
 		}
 		if ( Traces::loggers_count() > 0 ) {
-			$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-tviewer' ), esc_html__( 'Traces', 'decalog' ) );
+			$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=decalog-tviewer' ), decalog_esc_html__( 'Traces', 'decalog' ) );
 		}
 		return $actions;
 	}
@@ -434,7 +437,7 @@ class Decalog_Admin {
 	 */
 	public function add_row_meta( $links, $file ) {
 		if ( 0 === strpos( $file, DECALOG_SLUG . '/' ) ) {
-			$links[] = '<a href="https://wordpress.org/support/plugin/' . DECALOG_SLUG . '/">' . __( 'Support', 'decalog' ) . '</a>';
+			$links[] = '<a href="https://wordpress.org/support/plugin/' . DECALOG_SLUG . '/">' .decalog__( 'Support', 'decalog' ) . '</a>';
 		}
 		return $links;
 	}
@@ -518,7 +521,7 @@ class Decalog_Admin {
 			$this->creation_mode  = true;
 			$this->current_logger = [
 				'uuid'    => $uuid = UUID::generate_v4(),
-				'name'    => esc_html__( 'New logger', 'decalog' ),
+				'name'    => decalog_esc_html__( 'New logger', 'decalog' ),
 				'handler' => $this->current_handler['id'],
 				'running' => Option::network_get( 'logger_autostart' ),
 				'level'   => Logger::INFO,
@@ -542,7 +545,7 @@ class Decalog_Admin {
 							}
 							if ( 'system' === $current_handler['class'] ) {
 								$view    = 'decalog-admin-settings-main';
-								$message = esc_html__( 'You can not modify or remove a system logger.', 'decalog' );
+								$message = decalog_esc_html__( 'You can not modify or remove a system logger.', 'decalog' );
 								$code    = 403;
 								$this->logger->error( $message, $code );
 								add_settings_error( 'decalog_error', $code, $message, 'error' );
@@ -557,7 +560,7 @@ class Decalog_Admin {
 							}
 							if ( 'system' === $current_handler['class'] ) {
 								$view    = 'decalog-admin-settings-main';
-								$message = esc_html__( 'You can not modify or remove a system logger.', 'decalog' );
+								$message = decalog_esc_html__( 'You can not modify or remove a system logger.', 'decalog' );
 								$code    = 403;
 								$this->logger->error( $message, $code );
 								add_settings_error( 'decalog_error', $code, $message, 'error' );
@@ -581,12 +584,12 @@ class Decalog_Admin {
 										$loggers[ $uuid ]['running'] = true;
 										Option::network_set( 'loggers', $loggers );
 										$this->logger = Log::bootstrap( 'plugin', DECALOG_PRODUCT_SHORTNAME, DECALOG_VERSION );
-										$message      = sprintf( esc_html__( 'Logger %s has started.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
+										$message      = sprintf( decalog_esc_html__( 'Logger %s has started.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
 										$code         = 0;
 										add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 										$this->logger->info( sprintf( 'Logger "%s" has started.', $loggers[ $uuid ]['name'] ), $code );
 									} else {
-										$message = esc_html__( 'You can not start or pause a system logger.', 'decalog' );
+										$message = decalog_esc_html__( 'You can not start or pause a system logger.', 'decalog' );
 										$code    = 403;
 										$this->logger->error( $message, $code );
 										add_settings_error( 'decalog_error', $code, $message, 'error' );
@@ -599,7 +602,7 @@ class Decalog_Admin {
 								if ( $nonce && $uuid && wp_verify_nonce( $nonce, 'decalog-logger-pause-' . $uuid ) ) {
 									$loggers = Option::network_get( 'loggers' );
 									if ( array_key_exists( $uuid, $loggers ) && 'system' !== $this->current_handler['class'] ) {
-										$message = sprintf( esc_html__( 'Logger %s has been paused.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
+										$message = sprintf( decalog_esc_html__( 'Logger %s has been paused.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
 										$code    = 0;
 										$this->logger->notice( sprintf( 'Logger "%s" has been paused.', $loggers[ $uuid ]['name'] ), $code );
 										$loggers[ $uuid ]['running'] = false;
@@ -608,7 +611,7 @@ class Decalog_Admin {
 										add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 									}
 									else {
-										$message = esc_html__( 'You can not start or pause a system logger.', 'decalog' );
+										$message = decalog_esc_html__( 'You can not start or pause a system logger.', 'decalog' );
 										$code    = 403;
 										$this->logger->error( $message, $code );
 										add_settings_error( 'decalog_error', $code, $message, 'error' );
@@ -626,12 +629,12 @@ class Decalog_Admin {
 											$done &= $test->log( $level, ucfirst( strtolower( $level ) ) . ' test message.', 210871 );
 										}
 										if ( $done ) {
-											$message = sprintf( esc_html__( 'Test messages have been sent to logger %s.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
+											$message = sprintf( decalog_esc_html__( 'Test messages have been sent to logger %s.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
 											$code    = 0;
 											$this->logger->info( sprintf( 'Logger "%s" has been tested.', $loggers[ $uuid ]['name'] ), $code );
 											add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 										} else {
-											$message = sprintf( esc_html__( 'Test messages have not been sent to logger %s. Please check the logger\'s settings.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
+											$message = sprintf( decalog_esc_html__( 'Test messages have not been sent to logger %s. Please check the logger\'s settings.', 'decalog' ), '<em>' . $loggers[ $uuid ]['name'] . '</em>' );
 											$code    = 1;
 											$this->logger->warning( sprintf( 'Logger "%s" has been unsuccessfully tested.', $loggers[ $uuid ]['name'] ), $code );
 											add_settings_error( 'decalog_error', $code, $message, 'error' );
@@ -656,9 +659,9 @@ class Decalog_Admin {
 							if ( class_exists( 'PerfOpsOne\Installer' ) && $nonce && wp_verify_nonce( $nonce, $action ) ) {
 								$result = \PerfOpsOne\Installer::do( 'device-detector', true );
 								if ( '' === $result ) {
-									add_settings_error( 'decalog_no_error', '', esc_html__( 'Plugin successfully installed and activated with default settings.', 'decalog' ), 'info' );
+									add_settings_error( 'decalog_no_error', '', decalog_esc_html__( 'Plugin successfully installed and activated with default settings.', 'decalog' ), 'info' );
 								} else {
-									add_settings_error( 'decalog_install_error', '', sprintf( esc_html__( 'Unable to install or activate the plugin. Error message: %s.', 'decalog' ), $result ), 'error' );
+									add_settings_error( 'decalog_install_error', '', sprintf( decalog_esc_html__( 'Unable to install or activate the plugin. Error message: %s.', 'decalog' ), $result ), 'error' );
 								}
 							}
 							break;
@@ -666,9 +669,9 @@ class Decalog_Admin {
 							if ( class_exists( 'PerfOpsOne\Installer' ) && $nonce && wp_verify_nonce( $nonce, $action ) ) {
 								$result = \PerfOpsOne\Installer::do( 'ip-locator', true );
 								if ( '' === $result ) {
-									add_settings_error( 'decalog_no_error', '', esc_html__( 'Plugin successfully installed and activated with default settings.', 'decalog' ), 'info' );
+									add_settings_error( 'decalog_no_error', '', decalog_esc_html__( 'Plugin successfully installed and activated with default settings.', 'decalog' ), 'info' );
 								} else {
-									add_settings_error( 'decalog_install_error', '', sprintf( esc_html__( 'Unable to install or activate the plugin. Error message: %s.', 'decalog' ), $result ), 'error' );
+									add_settings_error( 'decalog_install_error', '', sprintf( decalog_esc_html__( 'Unable to install or activate the plugin. Error message: %s.', 'decalog' ), $result ), 'error' );
 								}
 							}
 							break;
@@ -709,12 +712,12 @@ class Decalog_Admin {
 					}
 				}
 				Option::network_set( 'listeners', $list );
-				$message = esc_html__( 'Listeners settings have been saved.', 'decalog' );
+				$message = decalog_esc_html__( 'Listeners settings have been saved.', 'decalog' );
 				$code    = 0;
 				add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 				$this->logger->info( 'Listeners settings updated.', $code );
 			} else {
-				$message = esc_html__( 'Listeners settings have not been saved. Please try again.', 'decalog' );
+				$message = decalog_esc_html__( 'Listeners settings have not been saved. Please try again.', 'decalog' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( 'Listeners settings not updated.', $code );
@@ -731,12 +734,12 @@ class Decalog_Admin {
 		if ( ! empty( $_POST ) ) {
 			if ( array_key_exists( '_wpnonce', $_POST ) && wp_verify_nonce( $_POST['_wpnonce'], 'decalog-listeners-options' ) ) {
 				Option::network_set( 'autolisteners', true );
-				$message = esc_html__( 'Listeners settings have been reset to defaults.', 'decalog' );
+				$message = decalog_esc_html__( 'Listeners settings have been reset to defaults.', 'decalog' );
 				$code    = 0;
 				add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 				$this->logger->info( 'Listeners settings reset to defaults.', $code );
 			} else {
-				$message = esc_html__( 'Listeners settings have not been reset to defaults. Please try again.', 'decalog' );
+				$message = decalog_esc_html__( 'Listeners settings have not been reset to defaults. Please try again.', 'decalog' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( 'Listeners settings not reset to defaults.', $code );
@@ -766,18 +769,22 @@ class Decalog_Admin {
 				Option::network_set( 'slow_query_warn', array_key_exists( 'decalog_plugin_features_slowqueries', $_POST ) ? (bool) filter_input( INPUT_POST, 'decalog_plugin_features_slowqueries' ) : false );
 				Option::network_set( 'unknown_metrics_warn', array_key_exists( 'decalog_plugin_features_unknownmetrics', $_POST ) ? (bool) filter_input( INPUT_POST, 'decalog_plugin_features_unknownmetrics' ) : false );
 				Option::network_set( 'trace_query', array_key_exists( 'decalog_plugin_features_tracequeries', $_POST ) ? (bool) filter_input( INPUT_POST, 'decalog_plugin_features_tracequeries' ) : false );
+
+				Option::network_set( 'unbuffered_cli', array_key_exists( 'decalog_plugin_advanced_unbuffered_cli', $_POST ) ? (bool) filter_input( INPUT_POST, 'decalog_plugin_advanced_unbuffered_cli' ) : false );
+				Option::network_set( 'buffer_size', array_key_exists( 'decalog_plugin_advanced_buffer_size', $_POST ) ? (string) filter_input( INPUT_POST, 'decalog_plugin_advanced_buffer_size', FILTER_SANITIZE_NUMBER_INT ) : Option::network_get( 'buffer_size' ) );
+
 				$autolog = array_key_exists( 'decalog_plugin_features_livelog', $_POST ) ? (bool) filter_input( INPUT_POST, 'decalog_plugin_features_livelog' ) : false;
 				if ( $autolog ) {
 					Autolog::activate();
 				} else {
 					Autolog::deactivate();
 				}
-				$message = esc_html__( 'Plugin settings have been saved.', 'decalog' );
+				$message = decalog_esc_html__( 'Plugin settings have been saved.', 'decalog' );
 				$code    = 0;
 				add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 				$this->logger->info( 'Plugin settings updated.', $code );
 			} else {
-				$message = esc_html__( 'Plugin settings have not been saved. Please try again.', 'decalog' );
+				$message = decalog_esc_html__( 'Plugin settings have not been saved. Please try again.', 'decalog' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( 'Plugin settings not updated.', $code );
@@ -794,12 +801,12 @@ class Decalog_Admin {
 		if ( ! empty( $_POST ) ) {
 			if ( array_key_exists( '_wpnonce', $_POST ) && wp_verify_nonce( $_POST['_wpnonce'], 'decalog-plugin-options' ) ) {
 				Option::reset_to_defaults();
-				$message = esc_html__( 'Plugin settings have been reset to defaults.', 'decalog' );
+				$message = decalog_esc_html__( 'Plugin settings have been reset to defaults.', 'decalog' );
 				$code    = 0;
 				add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 				$this->logger->info( 'Plugin settings reset to defaults.', $code );
 			} else {
-				$message = esc_html__( 'Plugin settings have not been reset to defaults. Please try again.', 'decalog' );
+				$message = decalog_esc_html__( 'Plugin settings have not been reset to defaults. Please try again.', 'decalog' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( 'Plugin settings not reset to defaults.', $code );
@@ -851,13 +858,13 @@ class Decalog_Admin {
 					}
 					Option::network_set( 'loggers', $loggers );
 					$this->logger = Log::bootstrap( 'plugin', DECALOG_PRODUCT_SHORTNAME, DECALOG_VERSION );
-					$message      = sprintf( esc_html__( 'Logger %s has been saved.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
+					$message      = sprintf( decalog_esc_html__( 'Logger %s has been saved.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
 					$code         = 0;
 					add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 					$this->logger->info( sprintf( 'Logger "%s" has been saved.', $this->current_logger['name'] ), $code );
 				}
 			} else {
-				$message = sprintf( esc_html__( 'Logger %s has not been saved. Please try again.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
+				$message = sprintf( decalog_esc_html__( 'Logger %s has not been saved. Please try again.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( sprintf( 'Logger "%s" has not been saved.', $this->current_logger['name'] ), $code );
@@ -881,13 +888,13 @@ class Decalog_Admin {
 					unset( $loggers[ $uuid ] );
 					Option::network_set( 'loggers', $loggers );
 					$this->logger = Log::bootstrap( 'plugin', DECALOG_PRODUCT_SHORTNAME, DECALOG_VERSION );
-					$message      = sprintf( esc_html__( 'Logger %s has been removed.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
+					$message      = sprintf( decalog_esc_html__( 'Logger %s has been removed.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
 					$code         = 0;
 					add_settings_error( 'decalog_no_error', $code, $message, 'updated' );
 					$this->logger->notice( sprintf( 'Logger "%s" has been removed.', $this->current_logger['name'] ), $code );
 				}
 			} else {
-				$message = sprintf( esc_html__( 'Logger %s has not been removed. Please try again.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
+				$message = sprintf( decalog_esc_html__( 'Logger %s has not been removed. Please try again.', 'decalog' ), '<em>' . $this->current_logger['name'] . '</em>' );
 				$code    = 2;
 				add_settings_error( 'decalog_nonce_error', $code, $message, 'error' );
 				$this->logger->warning( sprintf( 'Logger "%s" has not been removed.', $this->current_logger['name'] ), $code );
@@ -910,12 +917,12 @@ class Decalog_Admin {
 			'decalog_listeners_options_section',
 			[
 				'list'        => [
-					0 => [ 'manual', esc_html__( 'Selected listeners', 'decalog' ) ],
-					1 => [ 'auto', esc_html__( 'All available listeners (recommended)', 'decalog' ) ],
+					0 => [ 'manual', decalog_esc_html__( 'Selected listeners', 'decalog' ) ],
+					1 => [ 'auto', decalog_esc_html__( 'All available listeners (recommended)', 'decalog' ) ],
 				],
 				'id'          => 'decalog_listeners_options_auto',
 				'value'       => Option::network_get( 'autolisteners' ) ? 'auto' : 'manual',
-				'description' => esc_html__( 'Automatically or selectively choose which sources to listen.', 'decalog' ),
+				'description' => decalog_esc_html__( 'Automatically or selectively choose which sources to listen.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -952,10 +959,10 @@ class Decalog_Admin {
 			}
 		}
 		$main = [
-			esc_html__( 'Standard listeners', 'decalog' ) => $standard,
-			esc_html__( 'Plugin listeners', 'decalog' )   => $plugin,
-			esc_html__( 'Library listeners', 'decalog' )  => $library,
-			esc_html__( 'Theme listeners', 'decalog' )    => $theme,
+			decalog_esc_html__( 'Standard listeners', 'decalog' ) => $standard,
+			decalog_esc_html__( 'Plugin listeners', 'decalog' )   => $plugin,
+			decalog_esc_html__( 'Library listeners', 'decalog' )  => $library,
+			decalog_esc_html__( 'Theme listeners', 'decalog' )    => $theme,
 		];
 		$form = new Form();
 		foreach ( $main as $name => $items ) {
@@ -996,10 +1003,10 @@ class Decalog_Admin {
 			'decalog_loggers_options_section',
 			'decalog_loggers_options_section',
 			[
-				'text'        => esc_html__( 'Auto-start', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Auto-start', 'decalog' ),
 				'id'          => 'decalog_loggers_options_autostart',
 				'checked'     => Option::network_get( 'logger_autostart' ),
-				'description' => esc_html__( 'If checked, when a new logger is added it automatically starts.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, when a new logger is added it automatically starts.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1012,10 +1019,10 @@ class Decalog_Admin {
 			'decalog_loggers_options_section',
 			'decalog_loggers_options_section',
 			[
-				'text'        => esc_html__( 'Respect privacy', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Respect privacy', 'decalog' ),
 				'id'          => 'decalog_loggers_options_pseudonymization',
 				'checked'     => Option::network_get( 'pseudonymization' ),
-				'description' => esc_html__( 'If checked, DecaLog will try to obfuscate personal information in events messages.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, DecaLog will try to obfuscate personal information in events messages.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1028,10 +1035,10 @@ class Decalog_Admin {
 			'decalog_loggers_options_section',
 			'decalog_loggers_options_section',
 			[
-				'text'        => esc_html__( 'Respect WP_DEBUG', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Respect WP_DEBUG', 'decalog' ),
 				'id'          => 'decalog_loggers_options_wpdebug',
 				'checked'     => Option::network_get( 'respect_wp_debug' ),
-				'description' => esc_html__( 'If checked, the value of WP_DEBUG will override each logger\'s settings for minimal level of logging.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, the value of WP_DEBUG will override each logger\'s settings for minimal level of logging.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1044,10 +1051,10 @@ class Decalog_Admin {
 			'decalog_loggers_options_section',
 			'decalog_loggers_options_section',
 			[
-				'text'        => esc_html__( 'Variables substitution', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Variables substitution', 'decalog' ),
 				'id'          => 'decalog_loggers_options_env_substitution',
 				'checked'     => Option::network_get( 'env_substitution' ),
-				'description' => esc_html__( 'If checked, DecaLog will replace strings between curly braces by the corresponding environment variables or PHP-defined constants.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, DecaLog will replace strings between curly braces by the corresponding environment variables or PHP-defined constants.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1063,10 +1070,10 @@ class Decalog_Admin {
 	 */
 	protected function get_privileges_array() {
 		$result   = [];
-		$result[] = [ 0, esc_html__( 'Never override privileges', 'decalog' ) ];
-		$result[] = [ 1, esc_html__( 'Override privileges for development environments', 'decalog' ) ];
-		$result[] = [ 2, esc_html__( 'Override privileges for staging environments', 'decalog' ) ];
-		$result[] = [ 3, esc_html__( 'Override privileges for staging and development environments', 'decalog' ) ];
+		$result[] = [ 0, decalog_esc_html__( 'Never override privileges', 'decalog' ) ];
+		$result[] = [ 1, decalog_esc_html__( 'Override privileges for development environments', 'decalog' ) ];
+		$result[] = [ 2, decalog_esc_html__( 'Override privileges for staging environments', 'decalog' ) ];
+		$result[] = [ 3, decalog_esc_html__( 'Override privileges for staging and development environments', 'decalog' ) ];
 		return $result;
 	}
 
@@ -1080,7 +1087,7 @@ class Decalog_Admin {
 		if ( function_exists( 'wp_get_environment_type' ) ) {
 			add_settings_field(
 				'decalog_plugin_options_privileges',
-				esc_html__( 'Logs accesses', 'decalog' ),
+				decalog_esc_html__( 'Logs accesses', 'decalog' ),
 				[ $form, 'echo_field_select' ],
 				'decalog_plugin_options_section',
 				'decalog_plugin_options_section',
@@ -1088,7 +1095,7 @@ class Decalog_Admin {
 					'list'        => $this->get_privileges_array(),
 					'id'          => 'decalog_plugin_options_privileges',
 					'value'       => Option::network_get( 'privileges' ),
-					'description' => esc_html__( 'Allows other users than administrators to access live console and local events logs depending of environments.', 'decalog' ) . '<br/>' . esc_html__( 'Note: choosing something other than "Never override privileges" grants access to all users having "read_private_pages" capability and may have privacy and security implications.', 'decalog' ),
+					'description' => decalog_esc_html__( 'Allows other users than administrators to access live console and local events logs depending of environments.', 'decalog' ) . '<br/>' . decalog_esc_html__( 'Note: choosing something other than "Never override privileges" grants access to all users having "read_private_pages" capability and may have privacy and security implications.', 'decalog' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1102,10 +1109,10 @@ class Decalog_Admin {
 			'decalog_plugin_options_section',
 			'decalog_plugin_options_section',
 			[
-				'text'        => esc_html__( 'Display in admin bar', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Display in admin bar', 'decalog' ),
 				'id'          => 'decalog_plugin_options_adminbar',
 				'checked'     => Option::network_get( 'adminbar' ),
-				'description' => esc_html__( 'If checked, DecaLog will display in admin bar the most important actions, if any.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, DecaLog will display in admin bar the most important actions, if any.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1118,10 +1125,10 @@ class Decalog_Admin {
 			'decalog_plugin_options_section',
 			'decalog_plugin_options_section',
 			[
-				'text'        => esc_html__( 'Download and display', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Download and display', 'decalog' ),
 				'id'          => 'decalog_plugin_options_favicons',
 				'checked'     => Option::network_get( 'download_favicons' ),
-				'description' => esc_html__( 'If checked, DecaLog will download favicons of websites to display them in reports.', 'decalog' ) . '<br/>' . esc_html__( 'Note: This feature uses the (free) Google Favicon Service.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, DecaLog will download favicons of websites to display them in reports.', 'decalog' ) . '<br/>' . decalog_esc_html__( 'Note: This feature uses the (free) Google Favicon Service.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1129,12 +1136,12 @@ class Decalog_Admin {
 		register_setting( 'decalog_plugin_options_section', 'decalog_plugin_options_favicons' );
 		if ( class_exists( 'PODeviceDetector\API\Device' ) ) {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'thumbs-up', 'none', '#00C800' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('Your site is currently using %s.', 'decalog' ), '<em>Device Detector v' . PODD_VERSION .'</em>' );
+			$help .= sprintf( decalog_esc_html__('Your site is currently using %s.', 'decalog' ), '<em>Device Detector v' . PODD_VERSION .'</em>' );
 		} else {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'alert-triangle', 'none', '#FF8C00' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('Your site does not use any device detection mechanism. To handle user-agents and callers reporting in DecaLog, I recommend you to install the excellent (and free) %s. But it is not mandatory.', 'decalog' ), '<a href="https://wordpress.org/plugins/device-detector/">Device Detector</a>' );
+			$help .= sprintf( decalog_esc_html__('Your site does not use any device detection mechanism. To handle user-agents and callers reporting in DecaLog, I recommend you to install the excellent (and free) %s. But it is not mandatory.', 'decalog' ), '<a href="https://wordpress.org/plugins/device-detector/">Device Detector</a>' );
 			if ( class_exists( 'PerfOpsOne\Installer' ) && ! Environment::is_wordpress_multisite() ) {
-				$help .= '<br/><a href="' . wp_nonce_url( admin_url( 'admin.php?page=decalog-settings&tab=misc&action=install-podd' ), 'install-podd', 'nonce' ) . '" class="poo-button-install"><img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'download-cloud', 'none', '#FFFFFF', 3 ) . '" />&nbsp;&nbsp;' . esc_html__('Install It Now', 'decalog' ) . '</a>';
+				$help .= '<br/><a href="' . wp_nonce_url( admin_url( 'admin.php?page=decalog-settings&tab=misc&action=install-podd' ), 'install-podd', 'nonce' ) . '" class="poo-button-install"><img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'download-cloud', 'none', '#FFFFFF', 3 ) . '" />&nbsp;&nbsp;' . decalog_esc_html__('Install It Now', 'decalog' ) . '</a>';
 			}
 		}
 		add_settings_field(
@@ -1151,12 +1158,12 @@ class Decalog_Admin {
 		$geo_ip = new GeoIP();
 		if ( $geo_ip->is_installed() ) {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'thumbs-up', 'none', '#00C800' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('Your site is currently using %s.', 'decalog' ), '<em>' . $geo_ip->get_full_name() .'</em>' );
+			$help .= sprintf( decalog_esc_html__('Your site is currently using %s.', 'decalog' ), '<em>' . $geo_ip->get_full_name() .'</em>' );
 		} else {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'alert-triangle', 'none', '#FF8C00' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('Your site does not use any IP geographic information plugin. To display callers geographical details in DecaLog, I recommend you to install the excellent (and free) %s. But it is not mandatory.', 'decalog' ), '<a href="https://wordpress.org/plugins/ip-locator/">IP Locator</a>' );
+			$help .= sprintf( decalog_esc_html__('Your site does not use any IP geographic information plugin. To display callers geographical details in DecaLog, I recommend you to install the excellent (and free) %s. But it is not mandatory.', 'decalog' ), '<a href="https://wordpress.org/plugins/ip-locator/">IP Locator</a>' );
 			if ( class_exists( 'PerfOpsOne\Installer' ) && ! Environment::is_wordpress_multisite() ) {
-				$help .= '<br/><a href="' . wp_nonce_url( admin_url( 'admin.php?page=decalog-settings&tab=misc&action=install-iplocator' ), 'install-iplocator', 'nonce' ) . '" class="poo-button-install"><img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'download-cloud', 'none', '#FFFFFF', 3 ) . '" />&nbsp;&nbsp;' . esc_html__('Install It Now', 'decalog' ) . '</a>';
+				$help .= '<br/><a href="' . wp_nonce_url( admin_url( 'admin.php?page=decalog-settings&tab=misc&action=install-iplocator' ), 'install-iplocator', 'nonce' ) . '" class="poo-button-install"><img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'download-cloud', 'none', '#FFFFFF', 3 ) . '" />&nbsp;&nbsp;' . decalog_esc_html__('Install It Now', 'decalog' ) . '</a>';
 			}
 		}
 		add_settings_field(
@@ -1172,10 +1179,10 @@ class Decalog_Admin {
 		register_setting( 'decalog_plugin_options_section', 'decalog_plugin_options_geoip' );
 		if ( SharedMemory::$available ) {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'thumbs-up', 'none', '#00C800' ) . '" />&nbsp;';
-			$help .= esc_html__('Shared memory is available on your server: you can use live console.', 'decalog' );
+			$help .= decalog_esc_html__('Shared memory is available on your server: you can use live console.', 'decalog' );
 		} else {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'alert-triangle', 'none', '#FF8C00' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('Shared memory is not available on your server. To use live console you must activate %s PHP module.', 'decalog' ), '<code>shmop</code>' );
+			$help .= sprintf( decalog_esc_html__('Shared memory is not available on your server. To use live console you must activate %s PHP module.', 'decalog' ), '<code>shmop</code>' );
 		}
 		add_settings_field(
 			'decalog_plugin_options_shmop',
@@ -1189,10 +1196,10 @@ class Decalog_Admin {
 		);
 		if ( Cache::$apcu_available) {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'thumbs-up', 'none', '#00C800' ) . '" />&nbsp;';
-			$help .= esc_html__('APCu is available on your server: you can use high peformance storage mechanism.', 'decalog' );
+			$help .= decalog_esc_html__('APCu is available on your server: you can use high peformance storage mechanism.', 'decalog' );
 		} else {
 			$help  = '<img style="width:16px;vertical-align:text-bottom;" src="' . \Feather\Icons::get_base64( 'alert-triangle', 'none', '#FF8C00' ) . '" />&nbsp;';
-			$help .= sprintf( esc_html__('APCu is not available on your server. To use high peformance storage mechanism you must activate %s PHP module.', 'decalog' ), '<code>apcu</code>' );
+			$help .= sprintf( decalog_esc_html__('APCu is not available on your server. To use high peformance storage mechanism you must activate %s PHP module.', 'decalog' ), '<code>apcu</code>' );
 		}
 		add_settings_field(
 			'decalog_plugin_options_apcu',
@@ -1212,10 +1219,10 @@ class Decalog_Admin {
 			'decalog_plugin_options_section',
 			'decalog_plugin_options_section',
 			[
-				'text'        => esc_html__( 'Use public CDN', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Use public CDN', 'decalog' ),
 				'id'          => 'decalog_plugin_options_usecdn',
 				'checked'     => Option::network_get( 'use_cdn' ),
-				'description' => esc_html__( 'Use CDN (jsDelivr) to serve DecaLog scripts and stylesheets.', 'decalog' ),
+				'description' => decalog_esc_html__( 'Use CDN (jsDelivr) to serve DecaLog scripts and stylesheets.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1228,10 +1235,10 @@ class Decalog_Admin {
 			'decalog_plugin_options_section',
 			'decalog_plugin_options_section',
 			[
-				'text'        => esc_html__( 'Display', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Display', 'decalog' ),
 				'id'          => 'decalog_plugin_options_nag',
 				'checked'     => Option::network_get( 'display_nag' ),
-				'description' => esc_html__( 'Allows DecaLog to display admin notices throughout the admin dashboard.', 'decalog' ) . '<br/>' . esc_html__( 'Note: DecaLog respects DISABLE_NAG_NOTICES flag.', 'decalog' ),
+				'description' => decalog_esc_html__( 'Allows DecaLog to display admin notices throughout the admin dashboard.', 'decalog' ) . '<br/>' . decalog_esc_html__( 'Note: DecaLog respects DISABLE_NAG_NOTICES flag.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1253,10 +1260,10 @@ class Decalog_Admin {
 			'decalog_plugin_features_section',
 			'decalog_plugin_features_section',
 			[
-				'text'        => esc_html__( 'Activate early loading', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Activate early loading', 'decalog' ),
 				'id'          => 'decalog_plugin_features_earlyloading',
 				'checked'     => ( 3 === \decalog_get_psr_log_version() ) ? Option::network_get( 'earlyloading' ) : false,
-				'description' => ( 3 === \decalog_get_psr_log_version() ) ? esc_html__( 'If checked, DecaLog will be loaded before all other plugins (recommended).', 'decalog' ) : esc_html__( 'Option not available.', 'decalog' ) . ' ' . sprintf( esc_html__( '%s is running in PSR-3 v1 compatibility mode due to an obsolete or outdated third-party plugin or theme.', 'decalog' ), DECALOG_PRODUCT_NAME ) . '<br/>' . sprintf( __( 'Please, do not hesitate to <a href="%s">take part in discussion</a>.', 'decalog' ), 'https://github.com/Pierre-Lannoy/wp-decalog/discussions/63' ),
+				'description' => ( 3 === \decalog_get_psr_log_version() ) ? decalog_esc_html__( 'If checked, DecaLog will be loaded before all other plugins (recommended).', 'decalog' ) : decalog_esc_html__( 'Option not available.', 'decalog' ) . ' ' . sprintf( decalog_esc_html__( '%s is running in PSR-3 v1 compatibility mode due to an obsolete or outdated third-party plugin or theme.', 'decalog' ), DECALOG_PRODUCT_NAME ) . '<br/>' . sprintf(decalog__( 'Please, do not hesitate to <a href="%s">take part in discussion</a>.', 'decalog' ), 'https://github.com/Pierre-Lannoy/wp-decalog/discussions/63' ),
 				'full_width'  => false,
 				'enabled'     => ( 3 === \decalog_get_psr_log_version() ),
 			]
@@ -1270,10 +1277,10 @@ class Decalog_Admin {
 				'decalog_plugin_features_section',
 				'decalog_plugin_features_section',
 				[
-					'text'        => esc_html__( 'Activate auto-logging', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Activate auto-logging', 'decalog' ),
 					'id'          => 'decalog_plugin_features_livelog',
 					'checked'     => Autolog::is_enabled(),
-					'description' => esc_html__( 'If checked, DecaLog will silently start the features needed by live console.', 'decalog' ),
+					'description' => decalog_esc_html__( 'If checked, DecaLog will silently start the features needed by live console.', 'decalog' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1286,10 +1293,10 @@ class Decalog_Admin {
 				'decalog_plugin_features_section',
 				'decalog_plugin_features_section',
 				[
-					'text'        => esc_html__( 'Warn about slow queries', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Warn about slow queries', 'decalog' ),
 					'id'          => 'decalog_plugin_features_slowqueries',
 					'checked'     => Option::network_get( 'slow_query_warn' ),
-					'description' => sprintf( esc_html__( 'If checked, a warning will be triggered for each SQL query that takes %.1F ms or more to execute.', 'decalog' ), Option::network_get( 'slow_query_ms', 50 ) ),
+					'description' => sprintf( decalog_esc_html__( 'If checked, a warning will be triggered for each SQL query that takes %.1F ms or more to execute.', 'decalog' ), Option::network_get( 'slow_query_ms', 50 ) ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1302,10 +1309,10 @@ class Decalog_Admin {
 				'decalog_plugin_features_section',
 				'decalog_plugin_features_section',
 				[
-					'text'        => esc_html__( 'Trace queries', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Trace queries', 'decalog' ),
 					'id'          => 'decalog_plugin_features_tracequeries',
 					'checked'     => Option::network_get( 'trace_query' ),
-					'description' => esc_html__( 'If checked, all SQL queries will be traced and pushed to running trace loggers.', 'decalog' ),
+					'description' => decalog_esc_html__( 'If checked, all SQL queries will be traced and pushed to running trace loggers.', 'decalog' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1318,10 +1325,10 @@ class Decalog_Admin {
 				'decalog_plugin_features_section',
 				'decalog_plugin_features_section',
 				[
-					'text'        => esc_html__( 'Warn about non-existent metrics', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Warn about non-existent metrics', 'decalog' ),
 					'id'          => 'decalog_plugin_features_unknownmetrics',
 					'checked'     => Option::network_get( 'unknown_metrics_warn' ),
-					'description' => esc_html__( 'If checked, an error will be triggered when a process try to set a value for a metric which is not defined.', 'decalog' ),
+					'description' => decalog_esc_html__( 'If checked, an error will be triggered when a process try to set a value for a metric which is not defined.', 'decalog' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1334,10 +1341,10 @@ class Decalog_Admin {
 				'decalog_plugin_features_section',
 				'decalog_plugin_features_section',
 				[
-					'text'        => esc_html__( 'Authenticated endpoint', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Authenticated endpoint', 'decalog' ),
 					'id'          => 'decalog_plugin_features_metrics_authent',
 					'checked'     => Option::network_get( 'metrics_authent' ),
-					'description' => sprintf( esc_html__( 'If checked, DecaLog will require authentication to serve %s calls.', 'decalog' ), '<code>' . htmlentities( '/wp-json/' . DECALOG_REST_NAMESPACE . '/metrics' ) . '</code>' ) . '<br/>' . sprintf( esc_html__( 'Note: if you activate authentication, you must generate an application password for a user having %s capability.', 'decalog' ), '<code>read_private_pages</code>' ),
+					'description' => sprintf( decalog_esc_html__( 'If checked, DecaLog will require authentication to serve %s calls.', 'decalog' ), '<code>' . htmlentities( '/wp-json/' . DECALOG_REST_NAMESPACE . '/metrics' ) . '</code>' ) . '<br/>' . sprintf( decalog_esc_html__( 'Note: if you activate authentication, you must generate an application password for a user having %s capability.', 'decalog' ), '<code>read_private_pages</code>' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1345,6 +1352,50 @@ class Decalog_Admin {
 			register_setting( 'decalog_plugin_features_section', 'decalog_plugin_features_metrics_authent' );
 		}
 	}
+
+	/**
+	 * Callback for plugin advanced section.
+	 *
+	 * @since 4.3.0
+	 */
+	public function plugin_advanced_section_callback() {
+		$form = new Form();
+		add_settings_field(
+			'decalog_plugin_advanced_unbuffered_cli',
+			'Force unbuffering',
+			[ $form, 'echo_field_checkbox' ],
+			'decalog_plugin_advanced_section',
+			'decalog_plugin_advanced_section',
+			[
+				'text'        => 'WP CLI events',
+				'id'          => 'decalog_plugin_advanced_unbuffered_cli',
+				'checked'     => Option::network_get( 'unbuffered_cli' ),
+				'description' => 'If checked, events triggered via WP CLI will not be buffered.',
+				'full_width'  => false,
+				'enabled'     => true,
+			]
+		);
+		register_setting( 'decalog_plugin_advanced_section', 'decalog_plugin_advanced_unbuffered_cli' );
+		add_settings_field(
+			'decalog_plugin_advanced_buffer_size',
+			'Events buffer size',
+			[ $form, 'echo_field_input_integer' ],
+			'decalog_plugin_advanced_section',
+			'decalog_plugin_advanced_section',
+			[
+				'id'          => 'decalog_plugin_advanced_buffer_size',
+				'value'       => Option::network_get( 'buffer_size' ),
+				'min'         => 10,
+				'max'         => 2000,
+				'step'        => 10,
+				'description' => 'Buffer size, in number of events.',
+				'full_width'  => false,
+				'enabled'     => true,
+			]
+		);
+		register_setting( 'decalog_plugin_advanced_section', 'decalog_plugin_advanced_buffer_size' );
+	}
+	
 
 	/**
 	 * Callback for logger misc section.
@@ -1366,7 +1417,7 @@ class Decalog_Admin {
 			[
 				'id'          => 'decalog_logger_misc_name',
 				'value'       => $this->current_logger['name'],
-				'description' => esc_html__( 'Used only in admin dashboard.', 'decalog' ),
+				'description' => decalog_esc_html__( 'Used only in admin dashboard.', 'decalog' ),
 				'full_width'  => false,
 				'placeholder' => '',
 				'enabled'     => true,
@@ -1384,7 +1435,7 @@ class Decalog_Admin {
 					'list'        => Log::get_levels( $this->current_handler['minimal'], true ),
 					'id'          => 'decalog_logger_misc_level',
 					'value'       => $this->current_logger['level'],
-					'description' => esc_html__( 'Minimal reported level. May be overridden by the "respect WP_DEBUG directive" option.', 'decalog' ),
+					'description' => decalog_esc_html__( 'Minimal reported level. May be overridden by the "respect WP_DEBUG directive" option.', 'decalog' ),
 					'full_width'  => false,
 					'enabled'     => true,
 				]
@@ -1457,7 +1508,7 @@ class Decalog_Admin {
 				[
 					'id'          => 'decalog_logger_specific_dummy',
 					'value'       => ini_get( 'error_log' ),
-					'description' => esc_html__( 'Value set in php.ini file.', 'decalog' ),
+					'description' => decalog_esc_html__( 'Value set in php.ini file.', 'decalog' ),
 					'full_width'  => false,
 					'placeholder' => '',
 					'enabled'     => false,
@@ -1472,7 +1523,7 @@ class Decalog_Admin {
 			$id   = 'decalog_logger_details_' . strtolower( $key );
 			$args = [
 				'id'          => $id,
-				'text'        => esc_html__( 'Enabled', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Enabled', 'decalog' ),
 				'checked'     => (bool) $this->current_logger['configuration'][ $key ],
 				'value'       => $this->current_logger['configuration'][ $key ],
 				'description' => $configuration['help'],
@@ -1515,10 +1566,10 @@ class Decalog_Admin {
 			'decalog_logger_privacy_section',
 			'decalog_logger_privacy_section',
 			[
-				'text'        => esc_html__( 'Obfuscation', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Obfuscation', 'decalog' ),
 				'id'          => 'decalog_logger_privacy_ip',
 				'checked'     => $this->current_logger['privacy']['obfuscation'],
-				'description' => esc_html__( 'If checked, logged details will contain hashes instead of real IPs.', 'decalog' ) . '<br/>' . esc_html__( 'Note: it concerns everything except events messages.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, logged details will contain hashes instead of real IPs.', 'decalog' ) . '<br/>' . decalog_esc_html__( 'Note: it concerns everything except events messages.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1531,10 +1582,10 @@ class Decalog_Admin {
 			'decalog_logger_privacy_section',
 			'decalog_logger_privacy_section',
 			[
-				'text'        => esc_html__( 'Pseudonymisation', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Pseudonymisation', 'decalog' ),
 				'id'          => 'decalog_logger_privacy_name',
 				'checked'     => $this->current_logger['privacy']['pseudonymization'],
-				'description' => esc_html__( 'If checked, logged details will contain hashes instead of user IDs & names.', 'decalog' ) . '<br/>' . esc_html__( 'Note: it concerns everything except events messages.', 'decalog' ),
+				'description' => decalog_esc_html__( 'If checked, logged details will contain hashes instead of user IDs & names.', 'decalog' ) . '<br/>' . decalog_esc_html__( 'Note: it concerns everything except events messages.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => true,
 			]
@@ -1557,10 +1608,10 @@ class Decalog_Admin {
 			'decalog_logger_details_section',
 			'decalog_logger_details_section',
 			[
-				'text'        => esc_html__( 'Included', 'decalog' ),
+				'text'        => decalog_esc_html__( 'Included', 'decalog' ),
 				'id'          => $id,
 				'checked'     => true,
-				'description' => esc_html__( 'Allows to log standard DecaLog information.', 'decalog' ),
+				'description' => decalog_esc_html__( 'Allows to log standard DecaLog information.', 'decalog' ),
 				'full_width'  => false,
 				'enabled'     => false,
 			]
@@ -1576,7 +1627,7 @@ class Decalog_Admin {
 				'decalog_logger_details_section',
 				'decalog_logger_details_section',
 				[
-					'text'        => esc_html__( 'Included', 'decalog' ),
+					'text'        => decalog_esc_html__( 'Included', 'decalog' ),
 					'id'          => $id,
 					'checked'     => in_array( $processor['id'], $this->current_logger['processors'], true ),
 					'description' => $processor['help'],
