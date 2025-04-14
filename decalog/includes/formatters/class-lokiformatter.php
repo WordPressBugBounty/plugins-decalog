@@ -72,7 +72,8 @@ class LokiFormatter implements FormatterInterface {
 	 */
 	public function format( array $record ): string {
 		if ( array_key_exists( 'level', $record ) ) {
-			$level_class = strtolower( EventTypes::$level_names[ $record['level'] ] );
+			$level_class = strtolower( EventTypes::$loki_level_names[ $record['level'] ] );
+			$record['level'] = $level_class;
 		} else {
 			$level_class = 'unknown';
 		}
@@ -86,22 +87,24 @@ class LokiFormatter implements FormatterInterface {
 		}
 		unset( $record['context']['phase'] );
 		$event  = [];
-		$stream = [];
+		$stream = [
+			'transport' => 'decalog',
+		];
 		$values = [];
 		switch ( $this->template ) {
 			case 1:
 				$stream['job']      = $this->job;
-				$stream['instance'] = DECALOG_INSTANCE_NAME;
+				$stream['host'] = DECALOG_INSTANCE_NAME;
 				$stream['level']    = $level_class;
 				break;
 			case 2:
 				$stream['job']      = $this->job;
-				$stream['instance'] = DECALOG_INSTANCE_NAME;
+				$stream['host'] = DECALOG_INSTANCE_NAME;
 				$stream['wp_env']      = Environment::stage();
 				break;
 			case 3:
 				$stream['job']      = $this->job;
-				$stream['instance'] = DECALOG_INSTANCE_NAME;
+				$stream['host'] = DECALOG_INSTANCE_NAME;
 				$stream['wp_version']  = Environment::wordpress_version_text( true );
 				break;
 			case 4:
@@ -115,7 +118,7 @@ class LokiFormatter implements FormatterInterface {
 				break;
 			default:
 				$stream['job']      = $this->job;
-				$stream['instance'] = DECALOG_INSTANCE_NAME;
+				$stream['host'] = DECALOG_INSTANCE_NAME;
 		}
 		$date             = new \DateTime();
 		$values[]         = (string) ( $date->format( 'Uu' ) * 1000 );
