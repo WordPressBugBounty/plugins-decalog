@@ -50,7 +50,6 @@ class Quiet extends \WP_CLI\Loggers\Quiet {
 	 * @since 3.6.0
 	 */
 	public function info( $message ) {
-		$this->logger->info( ucfirst( $message ) );
 		parent::info( $message );
 	}
 
@@ -61,7 +60,6 @@ class Quiet extends \WP_CLI\Loggers\Quiet {
 	 * @since 3.6.0
 	 */
 	public function success( $message ) {
-		$this->logger->notice( ucfirst( $message ) );
 		parent::success( $message );
 	}
 
@@ -72,7 +70,6 @@ class Quiet extends \WP_CLI\Loggers\Quiet {
 	 * @since 3.6.0
 	 */
 	public function warning( $message ) {
-		$this->logger->warning( ucfirst( $message ) );
 		parent::warning( $message );
 	}
 

@@ -3,6 +3,23 @@ All notable changes to **DecaLog** are documented in this *changelog*.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and **DecaLog** adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.0] - 2025-11-27
+
+### Added
+- Compatibility with WordPress 6.9.
+
+### Changed
+- [BC] Default PHP errors mapping has changed: now, `E_USER_NOTICE`, `E_STRICT` and `E_USER_DEPRECATED` are logged as `debug` events.
+- [BC] Some Action Scheduler events have a lower level (thanks to [Jan Thiel](https://github.com/JanThiel)).
+- [WP-CLI] Using `--quiet` now disables logging of events that are not errors. (thanks to [Jan Thiel](https://github.com/JanThiel)).
+- The levels of `pre_clear_scheduled_hook` are now debug/info to prevent excessive noise.
+- The level mapping is now usable earlyer while logging PHP errors (thanks to [s.protasov](https://github.com/pro2s)).
+- The auto loading sequence have been improved (thanks to [Viktor Szépe](https://github.com/szepeviktor)).
+
+### Fixed
+- Using last version of WP-Optimize plugin breaks the site (thanks to [123kubix123](https://github.com/123kubix123)).
+- There are many typos (thanks to [Viktor Szépe](https://github.com/szepeviktor)).
+
 ## [4.4.0] - 2025-04-14
 
 ### Added
@@ -30,7 +47,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 - To avoid name collision with some third-party configurations, the version tag in Datadog, Loki and Grafana loggers is now named `wp_version` (it was previously `version`).
-- Ability to self-update from Github.
+- Ability to self-update from GitHub.
 - The plugin user agent is now more consistent and "standard".
 
 ### Fixed
@@ -63,7 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 > **Important note about this version:**
 > - **DecaLog 4 is a transition version to prepare DecaLog 5.**
-> - **No migration path wil be available to migrate from DecaLog 3.x to 5.x, so don't ignore this version 4: install it!**
+> - **No migration path will be available to migrate from DecaLog 3.x to 5.x, so don't ignore this version 4: install it!**
 > - **DecaLog 5 will be available in early 2025.**
 
 ### Added
@@ -945,7 +962,7 @@ This sponsoring is a way to keep PerfOps One plugins suite free, open source and
 - Events relating to HTTP error codes (outbound requests) are now classified according to their severity.
 - The word "blog" has been replaced by "site" in events messages.
 - Some help strings have been modified to be more clear.
-- Lower severity of serialized json messages (triggered by `wp_die` handler) from criticial to debug.
+- Lower severity of serialized json messages (triggered by `wp_die` handler) from critical to debug.
 
 ### Removed
 - "Switch Blog" event (for WPMU) because lack of documentation.

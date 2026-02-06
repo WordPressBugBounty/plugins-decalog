@@ -54,10 +54,10 @@ class Decalog_Error_Handler extends \WP_Fatal_Error_Handler {
 		E_COMPILE_WARNING   => 300,
 		E_USER_WARNING      => 300,
 		E_NOTICE            => 250,
-		E_USER_NOTICE       => 250,
-		E_STRICT            => 250,
+		E_USER_NOTICE       => 100,
+		E_STRICT            => 100,
 		E_DEPRECATED        => 200,
-		E_USER_DEPRECATED   => 200,
+		E_USER_DEPRECATED   => 100,
 	];
 
 	/**
@@ -127,7 +127,15 @@ class Decalog_Error_Handler extends \WP_Fatal_Error_Handler {
 	 * @since    2.4.0
 	 */
 	public function handle_error( $code, $message, $file = '', $line = 0, $context = [] ) {
-		$level   = $this->error_level_map[ $code ] ?? 500;
+		/**
+		 * Filters the error levels map
+		 *
+		 * @See https://github.com/Pierre-Lannoy/wp-decalog/blob/master/HOOKS.md
+		 * @since 4.5.0
+		 * @param   array   $levels       The current map
+		 */
+		$map     = apply_filters( 'decalog_error_level_map', $this->error_level_map );
+		$level   = $map[ $code ] ?? 500;
 		$file    = $this->normalized_file_line( $file, $line );
 		$message = \sprintf( 'Error (%s): "%s" at `%s`.', $this->error_string_map[ $code ] ?? 'Unknown PHP error', $message, $file );
 		$this->prelog( $level, $message, (int) $code );

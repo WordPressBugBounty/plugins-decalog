@@ -191,7 +191,7 @@ class CoreListener extends AbstractListener {
 			add_filter( 'pre_clear_scheduled_hook', [ $this, 'pre_clear_scheduled_hook' ], PHP_INT_MAX, 2 );
 			add_filter( 'pre_unschedule_hook', [ $this, 'pre_unschedule_hook' ], PHP_INT_MAX, 2 );
 		}
-		// Aplications Passwords
+		// Applications Passwords
 		add_action( 'wp_create_application_password', [ $this, 'wp_create_application_password' ], 10, 4 );
 		add_action( 'wp_update_application_password', [ $this, 'wp_update_application_password' ], 10, 3 );
 		add_action( 'wp_delete_application_password', [ $this, 'wp_delete_application_password' ], 10, 2 );
@@ -1386,9 +1386,9 @@ class CoreListener extends AbstractListener {
 	 */
 	public function pre_clear_scheduled_hook( $pre, $hook, $args = null, $wp_error = null ) {
 		if ( is_null( $pre ) ) {
-			$this->logger->info( sprintf( 'The "%s" event will be cleared.', $hook ) );
+			$this->logger->debug( sprintf( 'The "%s" event will be cleared.', $hook ) );
 		} else {
-			$this->logger->notice( sprintf( 'A plugin prevented the "%s" event to be cleared.', $hook ) );
+			$this->logger->info( sprintf( 'A plugin prevented the "%s" event to be cleared.', $hook ) );
 		}
 		return $pre;
 	}
